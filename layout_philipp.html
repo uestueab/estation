@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tankstellenfinder</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <div class="login-container">
+            <form>
+                <input type="text" placeholder="Email" name="username">
+                <input type="password" placeholder="Passwort" name="psw">
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+        <div class="bg-image"></div>
+
+        <div class="bg-text">
+
+            <h1 style="font-size: 50px">Tankstellenfinder</h1>
+            <h3>Bitte einloggen um Service zu nutzen:</h3>
+
+            <p>Damit Sie nicht auf der Strecke bleiben</p>
+            <br>
+            <p>Bitte PLZ eingeben:</p>
+            <form action="anmelden.php" onsubmit="return checkForm()">
+                <input id="id1" type="number" name="plz" required>
+                <input type="submit" value="Bestätigen">
+            </form>
+        </div>
+</body>
+</html>
