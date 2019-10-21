@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" href="layout_position.css"> -->
+   
+    
+    <title>Tankstellenfinder</title>
+    
+</head>
+
+<body>
+    <!-- <div class="topnav">
+        <div class="login-container">
+            <form action="https://www.google.com/" method="get" target="_blank">
+                <input type="text" placeholder="Email" name="username">
+                <input type="password" placeholder="Passwort" name="psw">
+                <button  type="submit">Login</button>
+            </form>
+        </div>
+    </div> -->
+
+    <table id="myTable">
+            <tr>
+                
+              <th>Name</th>
+              <th>kraftstoff</th>
+              <th>Entfernung</th>
+              <th>Link</th>
+            </tr>
+            <tr>
+              <!-- 48.205925, 9.036964-->
+             
+              <td>Aral</td>
+              <td>Benzin/Diesel</td>
+              <td>2,8 km</td>
+              <td><a href="https://www.google.com/maps/place/Aral/@48.2059615,9.0347522,17z/data=!4m5!3m4!1s0x0:0x55b249f455763540!8m2!3d48.2059615!4d9.0369409" target="_blank">Navigation</a></td>
+            </tr>
+            <tr>
+              <!-- 48.206162, 9.034323-->
+            
+              <td>Agip</td>
+              <td>Benzin/Diesel</td>
+              <td>0,75 km</td>
+              <td><a href="https://www.google.com/maps/place/Agip+Service+Station/@48.2061787,9.0321558,17z/data=!4m5!3m4!1s0x0:0x2f4f735a497dbf88!8m2!3d48.2061787!4d9.0343445" target="_blank">Navigation</a></td>
+            </tr>
+            <tr>
+              
+              <td>SB-Tankstelle Ertugrul Mercan</td>
+              <td>Benzin/Diesel</td>
+              <td>1,6 km</td>
+              <td><a href="https://www.google.com/maps/place/SB+Tankstelle+Ertugrul+Mercan/@48.2085668,9.0311766,17.34z/data=!4m5!3m4!1s0x0:0xd24ca05c9e180f5c!8m2!3d48.2099901!4d9.0186904" target="_blank">Navigation</a></td>
+            </tr>
+              <tr>
+                <!-- 48.205925, 9.036964 -->
+                
+                <td>Albstadtwerke CNG Erdgas</td>
+                <td>Gas</td>
+                <td>4,7 km</td>
+                <td><a href="https://www.google.de/maps/place/Albstadtwerke+GmbH/@48.2470339,9.0211678,146m/data=!3m1!1e3!4m8!1m2!2m1!1sAlbstadtwerke+CNG!3m4!1s0x0:0xe485599edf6309d6!8m2!3d48.2470339!4d9.0217321" target="_blank">Navigation</a></td>
+              </tr>
+              <tr>
+                <!-- 48.206162, 9.034323-->
+                
+                <td>SWB CNG Erdgastankstelle</td>
+                <td>Gas</td>
+                <td>16,9 km</td>
+                <td><a href="https://www.google.de/maps/place/Stadtwerke+Balingen/@48.2568062,8.8504744,566m/data=!3m2!1e3!4b1!4m5!3m4!1s0x479a07a83f71cecb:0x7f7329858aeb8b01!8m2!3d48.2568062!4d8.8526577" target="_blank">Navigation</a></td>
+              </tr>
+              <tr>
+                 
+                <td>SW Sigmaringen CNG</td>
+                <td>Gas</td>
+                <td>24,9 km</td>
+                <td><a href="https://www.google.de/maps/place/Erdgastankstelle/@48.0813493,9.2371379,312m/data=!3m2!1e3!4b1!4m5!3m4!1s0x479a3ec2332eddb7:0xd0ba478aa65ee279!8m2!3d48.0813493!4d9.2383382" target="_blank">Navigation</a></td>
+              </tr>
+              <tr>
+                  
+                <td>ENBW Tankstelle</td>
+                <td>Elektro</td>
+                <td>0,55 km</td>
+                <td><a href="https://www.google.de/maps/place/bhg+Autohandelsgesellschaft+mbH,+Volkswagen+Vertragsh%C3%A4ndler/@48.2059193,9.0362416,16.76z/data=!4m8!1m2!2m1!1selektrotankstelle!3m4!1s0x479a1a833a148587:0x65154f5362dc2456!8m2!3d48.2065894!4d9.0384302" target="_blank">Navigation</a></td>
+              </tr>
+              <tr>
+                 
+                <td>EnBW Charging Station</td>
+                <td>Elektro</td>
+                <td>0,13 km</td>
+                <td><a href="https://www.google.de/maps/place/EnBW+Charging+Station/@48.209604,9.0297145,17z/data=!4m5!3m4!1s0x479a1a9be29e28d7:0x8fd9f3e43ddeebc0!8m2!3d48.209604!4d9.0311439" target="_blank">Navigation</a></td>
+              </tr>
+            </table>
+
+            <p>Löschen einer Position:</p>
+            <input id="posdel" type="text">
+            <button onclick="DeleteFunction()">Löschen</button>
+        
+            <p>Hinzufügen einer Position:</p>
+            <input id="pos" type="text" placeholder="Position"><br>
+            <input id="name" type="text" placeholder="Tankstellenname"><br>
+            <input id="art" type="text" placeholder="Kraftstoffart"><br>
+            <input id="Koordinaten" type="text" placeholder="Koordinaten"><br>
+            <input id="urllink" type="text" placeholder="Link"><br>
+            <button onclick="CreateFunction()">Hinzufügen</button>
+        <br>  
+</body>
+
+<script>
+function CreateFunction() {
+    var x = document.getElementById("pos").value;
+
+    var table= document.getElementById("myTable");
+    var row = table.insertRow(x);
+    var cell0 = row.insertCell(0);
+    var cell1 = row.insertCell(1);
+    var cell2 = row.insertCell(2);
+    var cell3 = row.insertCell(3);
+  
+    
+
+    cell0.innerHTML = document.getElementById("pos").value;
+    cell1.innerHTML = document.getElementById("name").value;
+    cell2.innerHTML = document.getElementById("art").value;
+    cell3.innerHTML = document.getElementById("Koordinaten").value;
+ }
+
+function DeleteFunction() {
+    var x = document.getElementById("posdel").value;
+    document.getElementById("myTable").deleteRow(x);
+}
+</script>
+</html>
