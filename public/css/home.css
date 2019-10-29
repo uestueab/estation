@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+html,body {
+    height: 100%;
+    background-color: #161616;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.module-border-wrap {
+
+    max-width: 75%;
+
+    padding: 1rem;
+    background: linear-gradient(to right, red, purple);
+    padding: 3px;
+
+}
+
+.module {
+    background: #161616;
+    color: white;
+    padding: 3rem;
+
+    font-family: 'Montserrat', sans-serif;
+    color: #dfddc7;
+}
+
+

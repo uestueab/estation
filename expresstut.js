@@ -74,7 +74,7 @@ app.get('/', function(req, res){
     if (req.session.loggedin) {
 		res.send('Welcome back, ' + req.session.username + '!');
 	} else {
-        res.render('home');
+        res.render('home', {style: 'home.css'});
 	}
 });
 
