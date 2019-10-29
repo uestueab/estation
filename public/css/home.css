@@ -5,9 +5,11 @@ html,body {
     background-color: #161616;
 }
 
+
+
 .vertical-center {
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh; /* These two lines are counted as one :-)       */
+  min-height: 100%;  
+  min-height: 100vh; 
 
   display: flex;
   align-items: center;
@@ -15,7 +17,7 @@ html,body {
 
 .module-border-wrap {
 
-    max-width: 75%;
+    max-width: 75%; /*determines the width of the box*/
 
     padding: 1rem;
     background: linear-gradient(to right, red, purple);

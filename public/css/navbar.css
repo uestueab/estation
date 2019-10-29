@@ -1,18 +1,28 @@
+/* loads fonts */
 @import url('https://fonts.googleapis.com/css?family=Abel&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
 .navbar-custom{
     background-color: #161616;
+
+    font-family: 'Abel', Light;
+    font-size: 18px;
 }
 
 .navbar-brand{ 
-    font-family: 'Abel', Light;
-    font-size: 18px;
 } 
 
-.btn-custom{
-    color:#fff;
-    background-color:#3f3442;
+
+.btn{
+    border:0px solid transparent; /* this was 1px earlier */
 }
 
+.btn-outline-light {
+    color: #dfddc7;
+    background-color: #161616;
+}
 
-    
+.btn-outline-light:hover {
+    color: #e6e6e6;
+    background-color: #161616;
+}
