@@ -3,23 +3,29 @@
     <a class="navbar-brand" href="/">
         <img src="https://img.icons8.com/nolan/32/000000/leaf.png" alt="logo">
     </a>
+    <!-- Collaped button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <!-- Links -->
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="/contact">Contact</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link 2</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link 3</a>
-        </li>
-    </ul>
-    <ul class="nav navbar-nav ml-auto">
-        <a href="/login" class="btn btn-outline-light my-2 my-sm-0" role="button">
-            <i class="fa fa-sign-in" aria-hidden="true"></i> Login</a> <!-- add a nice glyph icon --> 
-    </ul>
-
+    <!-- Collapse following items... -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/contact">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link 3</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav ml-auto">
+            <a href="/login" class="btn btn-outline-light my-2 my-sm-0" role="button">
+                <i class="fa fa-sign-in" aria-hidden="true"></i> Login</a> <!-- add a nice glyph icon --> 
+        </ul>
+    </div>
 </nav>
 

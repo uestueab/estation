@@ -17,6 +17,12 @@
     border:0px solid transparent; /* this was 1px earlier */
 }
 
+.btn-outline-light:focus,
+.btn-outline-light:active{
+    box-shadow:none !important;
+    outline:0px !important;
+}
+
 .btn-outline-light {
     color: #dfddc7;
     background-color: #161616;

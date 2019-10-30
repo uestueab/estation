@@ -1,23 +1,29 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-html,body {
-    height: 100%;
+body {
+    /* don't allow scrolling -- make it a single page
+     * override via media rule so elements fit the screen */
+    overflow-y:hidden; 
     background-color: #161616;
 }
 
 
 
 .vertical-center {
-  min-height: 100%;  
-  min-height: 100vh; 
+    position:relative;
 
-  display: flex;
-  align-items: center;
+    min-height: 100%;  
+    min-height: 100vh; 
+
+    display: flex;
+    margin-top: 20vh !important;
 }
 
 .module-border-wrap {
+    position: absolute;
 
     max-width: 75%; /*determines the width of the box*/
+
 
     padding: 1rem;
     background: linear-gradient(to right, red, purple);
@@ -34,4 +40,13 @@ html,body {
     color: #dfddc7;
 }
 
+/* When the width is between 600px and 900px OR above 1100px - change the appearance of <div> */
+@media screen and (max-width: 600px) and (min-width: 300px){
+    body{
+        overflow-y: auto;
+    }
 
+    .vertical-center{
+        margin-top: 10vh !important;
+    }
+}
