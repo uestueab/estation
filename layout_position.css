@@ -1,0 +1,108 @@
+select:invalid{
+    color: gray;
+}
+
+body,html {
+    height: 100%;
+    margin: 0;
+    font-family: Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.bg-image {
+    background-image: url('blur-fuel-fuel-pump-1381806.jpg');
+    filter: blur(5px);
+    -webkit-filter: blur(2px);
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.bg-text {
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    height: 80%;
+    padding: 20px;
+    text-align: center;
+}
+
+.topnav {
+    overflow: hidden;
+    position:fixed;
+   /*  background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4); */
+    color: white;
+    font-weight: bold;
+    top: 0%;
+    width: 100%;      
+    z-index: 2;
+    text-align: center;
+
+}
+
+
+.topnav .login-container {
+    float: right;
+}
+
+.topnav input {
+    padding: 6px;
+    margin-top: 3px;
+    margin-bottom: 8px;
+    font-size: 17px;
+    border: none;
+    width: 120px;
+}
+
+.topnav .login-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 3px;
+    margin-right: 16px;
+    color: white;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.topnav .login-container button:hover {
+    background-color: black;
+}
+
+
+#eingabeformular input {
+    border: #999 solid 1 px;
+}
+
+
+
+   
+    table {
+
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      
+      tr:nth-child(even) {
+        background-color: gray;
+      }
