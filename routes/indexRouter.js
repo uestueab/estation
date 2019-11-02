@@ -11,7 +11,7 @@ router.use(function(req, res, next){
 
 router.get('/', function(req, res){
     if (req.session.loggedin) {
-        res.send('Welcome back, ' + req.session.username + '!');
+        res.render('profile');
     } else {
         res.render('home', {style: 'home.css'});
     }
@@ -57,13 +57,26 @@ router.post('/login', function(req,res){
             req.session.username = username;
             res.redirect('/');
         } else {
-            res.send('Incorrect Username and/or Password!');
+            req.flash('error_msg', 'Incorrect Username and/or Password!');
+            res.redirect('/login');
         }
     } else {
-        res.send('Please enter Username and Password!');
-        res.end();
+        req.flash('error_msg', 'Please enter Username and Password!');
+        res.redirect('/login');
+
     }
-    // stmtGetUser.get(req.body.loginUser).password;
+});
+
+router.get('/logout', function(req, res){
+    // kill session and redirect to login page if user is logged in
+    if (req.session.loggedin) {
+        req.session.destroy();
+        res.redirect('/login');
+    }
+    else{
+        res.redirect('/login');
+    }
+
 });
 
 
