@@ -4,23 +4,27 @@ var app = express();
 app.disable('x-powerd-by');
 
 
+// REQUIRE
 var handlebars = require('express-handlebars').create({defaulLayout:'main'});
+var formidable = require('formidable');
+var flash = require('connect-flash');
+
+// ROUTES
+var indexRouter = require('./routes/indexRouter');
+
+// use template engine 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
-// MORE IMPORTS
-// body-parser parses your request and converts it into a format from which you can easily
-// extract relevant information that you may need.
+// parses requests, converts into a format you can easily extract information
 app.use(require('body-parser').urlencoded({extended: true}));
 
-// for parsing form data, especially file uploads
-var formidable = require('formidable');
 
 // secure cookies and help with sessions
 var credentials = require('./credentials.js');
 app.use(require('cookie-parser')(credentials.cookieSecret));
 
-// session
+// SESSION
 var session = require('express-session');
 app.use(session({
     secret: 'secret',
@@ -28,48 +32,45 @@ app.use(session({
     saveUninitialized: true
 }));
 
-var indexRouter = require('./routes/indexRouter');
+app.use(function (req, res, next) {
+    res.locals.session = req.session;
+    next();
+});
 
-// connect to database
+
+// connect flash
+app.use(flash());
+
+// some global variables
+app.use(function (req,res, next){
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    res.locals.user = req.user || null;
+    next();
+});
+
+
+// DATABASE CONNECTION
 console.log('Connecting to database');
 const Database = require("better-sqlite3");
 const dbOptions = { verbose: console.log };
 const dbFile = "./db/example.db"; // creates file if doesn't exist
 const dbInstance = new Database(dbFile, dbOptions);
+
+// stores a named property on the app object that can be retrieved later with app.get()
 app.set('db',dbInstance);
 app.locals.db = dbInstance; 
 
-// populate db with dummy users
-// db.prepare('CREATE TABLE IF NOT EXISTS users'
-// + '(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)').run();
-// const insert = db.prepare('INSERT INTO users (username, password) VALUES ("admin", "admin")').run();
 
-// const insert = db.prepare('INSERT INTO friends (name, age) VALUES (@name, @age)');
-
-// const insertMany = db.transaction((friends) => {
-// for (const friend of friends) insert.run(friend);
-// });
-
-// insertMany([
-// { name: 'Donald', age: 23 },
-// { name: 'Micky', age: 24 },
-// { name: 'Goofy', age: 25 },
-// ]);
-
-// const getUserFromDB = db.transaction((user) => {
-// stmtGetUser.get(user).username;
-// });
-
-
-// set port '3000'
+// SET PORT '3000'
 app.set('port', process.env.PORT || 8000);
 
 // make files in folder "public" accessible to express
 // __dirname is equal to the server filepath ($HOME/...)
 app.use(express.static(__dirname + '/public'));
 
-//////////////////////////////////////////////////
-// Define routes
+// use routes
 app.use('/', indexRouter);
 
 
