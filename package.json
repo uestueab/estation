@@ -1,9 +1,9 @@
 {
-  "name": "expresstut",
+  "name": "TANKSTELLENFINDER",
   "version": "1.0.0",
   "private": true,
-  "description": "express tut",
-  "main": "expresstut.js",
+  "description": "TANKSTELLENFINDER WEBAPP",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
