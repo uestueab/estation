@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Abel&display=swap');
+
 
 body {
     /* don't allow scrolling -- make it a single page
      * override via media rule so elements fit the screen */
-    overflow-y:hidden; 
+    overflow-y:auto; 
     background-color: #161616;
 }
 
@@ -12,8 +14,9 @@ body {
 .vertical-center {
     position:relative;
 
-    min-height: 100%;  
-    min-height: 100vh; 
+/* the two comments below make make overflow-y work as intended */
+/* min-height: 100%; */
+/* min-height: 100vh; */
 
     display: flex;
     margin-top: 20vh !important;
@@ -22,7 +25,6 @@ body {
 .module-border-wrap {
     position: absolute;
 
-    max-width: 75%; /*determines the width of the box*/
 
 
     padding: 1rem;
@@ -35,8 +37,10 @@ body {
     background: #161616;
     color: white;
     padding: 3rem;
-
-    font-family: 'Montserrat', sans-serif;
+    
+    font-family: 'Abel', Light;
+    font-size: 20px;
+/* font-family: 'Montserrat', sans-serif; */
     color: #dfddc7;
 }
 
