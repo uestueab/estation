@@ -13,7 +13,7 @@ router.get('/', function(req, res){
     if (req.session.loggedin) {
         res.render('profile');
     } else {
-        res.render('home', {style: 'home.css'});
+        res.render('home', {style: 'home.css', script: 'layout_position.js'});
     }
 });
 
