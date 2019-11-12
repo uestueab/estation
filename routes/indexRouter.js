@@ -17,6 +17,9 @@ router.get('/', function(req, res){
     }
 });
 
+// determines the front page action
+router.post('/standort', function(req,res){
+});
 
 router.get('/contact', function(req, res){
     res.render('contact', { csrf: 'CSRF token here'});

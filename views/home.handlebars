@@ -3,13 +3,20 @@
         <div class="module">
             <h2>Tankstellenfinder</h2>
             <br>
-            <form>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputStandort">Standort eingeben:</label>
-                        <input type="text" class="form-control" id="inputStandort" placeholder="Standort">
-                    </div>
-                    <div class="form-group col-md-6">
+            <div class="row">
+                <div class="col-4">
+                    {{#if success_msg}}
+                        <div class="alert alert-success">{{success_msg}}</div>
+                    {{/if}}
+
+                    {{#if error_msg}}
+                        <div class="alert alert-danger">{{error_msg}}</div>
+                    {{/if}}
+                </div>
+            </div>
+            <form role="form" action="/standort?form=standort" method="POST" >
+                <div class="form-row align-items-center">
+                    <div class="col-auto my-1">
                         <label for="inputKraftstoff">Kraftstoff auswählen:</label>
                         <select id="art" class="form-control">
                             <option id="benz" value="benzin">Benzin/Diesel</option>
@@ -17,14 +24,14 @@
                             <option id="elek" value="ele">Elektro</option>
                         </select>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md">
-                        <button type="button" class="btn btn-warning form-control"onclick="myFunction()">Los</button>
+                    <div class="col-auto my-5">
+                    </div>
+                    <div class="col-auto my-1">
+                        <label for="inputKraftstoff">...und bestätigen!</label>
+                        <button type="submit" class="btn btn-warning form-control"onclick="myFunction()">Los</button>
                     </div>
                 </div>
             </form>
-            
             <br>
             <br>
             <br>
