@@ -5,6 +5,10 @@ module.exports.checkUserAndPassword = function(request ,username, password) {
     return request.app.get('db').prepare('SELECT * FROM users WHERE username = ? AND password = ?').get(username,password) 
 }
 
+module.exports.getGasStationByType = function(request ,kraftstoff) {
+    return request.app.get('db').prepare('SELECT * FROM tankstellen WHERE kraftstofftyp = ?').all(kraftstoff) 
+}
+
 
 
 // populate db with dummy users
