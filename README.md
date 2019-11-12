@@ -16,7 +16,7 @@ node-gyp 5.0.3-1 <=
 ## Usage
 clone the repository and install all the required modules:
 ```python
-https://github.com/WebAnw2/estation.git
+git clone https://github.com/WebAnw2/estation.git
 cd estation
 npm install
 ```
