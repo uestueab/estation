@@ -19,7 +19,7 @@ router.get('/', function(req, res){
 
 // determines the front page action
 router.post('/standort', function(req,res){
-    var chosenGasStations = dbQuery.getGasStationByType(req,"benzin");
+    var chosenGasStations = dbQuery.getGasStationByType(req,"Benzin/Diesel");
     res.render('home', {style: 'home.css', tankstellen: chosenGasStations});
 
 
