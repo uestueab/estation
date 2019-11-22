@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 var dbQuery = require('../public/js/dbQueries.js');
+var app = require('../app');
+const geolib = require('geolib');
+
+
 
 // print which routes were taken to stdout
 router.use(function(req, res, next){
@@ -13,19 +17,53 @@ router.get('/', function(req, res){
     if (req.session.loggedin) {
         res.render('profile');
     } else {
-        res.render('home', {style: 'home.css', script: 'layout_position.js'});
+        res.render('home', {style: 'home.css', script: 'geolocation.js'});
     }
+});
+
+router.post('/', function(req, res){
+    // Get location of the user and define them globally
+    // so they become accessible to all routes
+    global.userLat = req.body.lat;
+    global.userLon = req.body.lon;
 });
 
 // determines the front page action
 router.post('/standort', function(req,res){
-    var chosenGasStations = dbQuery.getGasStationByType(req,"Benzin/Diesel");
-    res.render('home', {style: 'home.css', tankstellen: chosenGasStations});
+    var chosenKraftstoff = req.body.chosenKraftstoff;
+    var chosenGasStations = dbQuery.getGasStationByType(req,chosenKraftstoff);
 
+    // console.log(userLat,userLon);
 
+    var gasStations = [];
 
+    // populate gasStations array with jsons, where each json is a gas station
+    // with the distance to the users location
+    for (i in chosenGasStations){
+        var lat = chosenGasStations[i].lat;
+        var lon = chosenGasStations[i].lon;
+        
+        // calculate the distance and round to 2 decimal places 
+        var distance = geolib.getDistance({ latitude: userLat, longitude: userLon, },{ latitude: lat, longitude: lon})/1000;
+        var distance = distance.toFixed(2);
+
+        gasStations.push({
+            operator: chosenGasStations[i].operator,
+            kraftstofftyp: chosenGasStations[i].kraftstofftyp,
+            stadt: chosenGasStations[i].stadt,
+            entfernung: distance
+        });
+    };
+    
+    // sort ascending
+    gasStations.sort(function(a, b) {
+        return parseFloat(a.entfernung) - parseFloat(b.entfernung);
+    });
+    
+    res.render('home', {style: 'home.css', tankstellen: gasStations});
 });
 
+    
 router.get('/contact', function(req, res){
     res.render('contact', { csrf: 'CSRF token here'});
 });
@@ -52,8 +90,8 @@ router.get('/login', function(req, res){
 router.post('/login', function(req,res){
     console.log('Form : ' + req.query.form);
     console.log('CSRF token : ' + req.body._csrf);
-    console.log('Username : ' + req.body.loginUser);     // as defined in contact.handlebar
-    console.log('Password : ' + req.body.loginPass);   // as defined in contact.handlebar
+    console.log('Username : ' + req.body.loginUser);     
+    console.log('Password : ' + req.body.loginPass);   
 
     var username = req.body.loginUser;
     var password = req.body.loginPass;
@@ -86,20 +124,5 @@ router.get('/logout', function(req, res){
     }
 
 });
-
-
-// Handle errors
-// redirect 404 erros to 404.handlebar
-// router.use(function(req, res){
-// res.type('text/html');
-// res.status(404);
-// res.render('404');
-// });
-
-// router.use(function(err, req, res, next){
-// console.error(err.stack);
-// res.status(500);
-// res.render('500');
-// });
 
 module.exports = router;
