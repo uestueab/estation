@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+app.use(express.json())
 
 app.disable('x-powerd-by');
 
@@ -8,6 +9,7 @@ app.disable('x-powerd-by');
 var handlebars = require('express-handlebars').create({defaulLayout:'main'});
 var formidable = require('formidable');
 var flash = require('connect-flash');
+var bodyParser = require('body-parser')
 
 // ROUTES
 var indexRouter = require('./routes/indexRouter');
@@ -17,8 +19,7 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 // parses requests, converts into a format you can easily extract information
-app.use(require('body-parser').urlencoded({extended: true}));
-
+app.use(bodyParser.urlencoded({extended: true}));
 
 // secure cookies and help with sessions
 var credentials = require('./credentials.js');
@@ -36,8 +37,6 @@ app.use(function (req, res, next) {
     res.locals.session = req.session;
     next();
 });
-
-
 
 // connect flash
 app.use(flash());
@@ -78,3 +77,5 @@ app.use('/', indexRouter);
 app.listen(app.get('port'), function(){
     console.log("Express started on localhost:" + app.get('port') + " press Ctr-C to terminate");
 });
+
+module.exports = app;
