@@ -19,6 +19,7 @@
     "express-messages": "^1.0.1",
     "express-session": "^1.17.0",
     "formidable": "^1.2.1",
+    "geolib": "^3.1.0",
     "node-geocoder": "^3.25.0"
   }
 }
