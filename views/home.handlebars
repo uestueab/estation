@@ -18,17 +18,17 @@
                 <div class="form-row align-items-center">
                     <div class="col-auto my-1">
                         <label for="inputKraftstoff">Kraftstoff auswählen:</label>
-                        <select id="art" class="form-control">
-                            <option id="benz" value="benzin">Benzin/Diesel</option>
-                            <option id="gas"  value="gas">Gas</option>
-                            <option id="elek" value="ele">Elektro</option>
+                        <select id="art" class="form-control" name="chosenKraftstoff">
+                            <option id="benz" name="Benzin/Diesel" value="Benzin/Diesel">Benzin/Diesel</option>
+                            <option id="gas"  name="Gas" value="Gas">Gas</option>
+                            <option id="elek" name="Elektro"value="Elektro">Elektro</option>
                         </select>
                     </div>
                     <div class="col-auto my-5">
                     </div>
                     <div class="col-auto my-1">
                         <label for="inputKraftstoff">...und bestätigen!</label>
-                        <button type="submit" class="btn btn-warning form-control">Los</button>
+                        <button type="submit"  class="btn btn-warning form-control">Los</button>
                     </div>
                 </div>
             </form>
@@ -41,88 +41,18 @@
                         <th>Tankstelle/Betreiber</th>
                         <th>Kraftstoff</th>
                         <th>Stadt</th>
+                        <th>Entfernung (in Km)</th>
                     </tr>
                     {{#each tankstellen as |tankstelle|}}
                         <tr>
                             <td>{{tankstelle.operator}}</td>
                             <td>{{tankstelle.kraftstofftyp}}</td>
                             <td>{{tankstelle.stadt}}</td>
+                            <td>{{tankstelle.entfernung}}</td>
                         </tr>
                     {{/each}}
                 </table>
             {{/if}}
-
-
         </div>
-
-        {{!-- <table hidden id="myTableBenzin"> --}}
-            {{!-- <tr class="text-white-50"> --}}
-                {{!-- <th>Name</th> --}}
-                {{!-- <th>Entfernung</th> --}}
-                {{!-- <th>Link</th> --}}
-                {{!-- </tr> --}}
-            {{!-- <tr> --}}
-                {{!-- <!-- 48.205925, 9.036964--> --}}
-                {{!-- <td>Aral</td> --}}
-                {{!-- <td>2,8 km</td> --}}
-                {{!-- <td><a href="https://www.google.com/maps/place/Aral/@48.2059615,9.0347522,17z/data=!4m5!3m4!1s0x0:0x55b249f455763540!8m2!3d48.2059615!4d9.0369409" target="_blank">Navigation</a></td> --}}
-                {{!-- </tr> --}}
-            {{!-- <tr> --}}
-                {{!-- <!-- 48.206162, 9.034323--> --}}
-                {{!-- <td>Agip</td> --}}
-                {{!-- <td>0,75 km</td> --}}
-                {{!-- <td><a href="https://www.google.com/maps/place/Agip+Service+Station/@48.2061787,9.0321558,17z/data=!4m5!3m4!1s0x0:0x2f4f735a497dbf88!8m2!3d48.2061787!4d9.0343445" target="_blank">Navigation</a></td> --}}
-                {{!-- </tr> --}}
-            {{!-- <tr> --}}
-                {{!-- <td>SB-Tankstelle Ertugrul Mercan</td> --}}
-                {{!-- <td>1,6 km</td> --}}
-                {{!-- <td><a href="https://www.google.com/maps/place/SB+Tankstelle+Ertugrul+Mercan/@48.2085668,9.0311766,17.34z/data=!4m5!3m4!1s0x0:0xd24ca05c9e180f5c!8m2!3d48.2099901!4d9.0186904" target="_blank">Navigation</a></td> --}}
-                {{!-- </tr> --}}
-            {{!-- </table> --}}
-
-        {{!-- <table hidden id="myTableGas"> --}}
-            {{!-- <tr> --}}
-                {{!-- <th>Name</th> --}}
-                {{!-- <th>Entfernung</th> --}}
-                {{!-- <th>Link</th> --}}
-                {{!-- </tr> --}}
-            {{!-- <tr> --}}
-                {{!-- <!-- 48.205925, 9.036964 --> --}}
-                {{!-- <td>Albstadtwerke CNG Erdgas</td> --}}
-                {{!-- <td>4,7 km</td> --}}
-                {{!-- <td><a href="https://www.google.de/maps/place/Albstadtwerke+GmbH/@48.2470339,9.0211678,146m/data=!3m1!1e3!4m8!1m2!2m1!1sAlbstadtwerke+CNG!3m4!1s0x0:0xe485599edf6309d6!8m2!3d48.2470339!4d9.0217321" target="_blank">Navigation</a></td> --}}
-                {{!-- </tr> --}}
-            {{!-- <tr> --}}
-                {{!-- <!-- 48.206162, 9.034323--> --}}
-                {{!-- <td>SWB CNG Erdgastankstelle</td> --}}
-                {{!-- <td>16,9 km</td> --}}
-                {{!-- <td><a href="https://www.google.de/maps/place/Stadtwerke+Balingen/@48.2568062,8.8504744,566m/data=!3m2!1e3!4b1!4m5!3m4!1s0x479a07a83f71cecb:0x7f7329858aeb8b01!8m2!3d48.2568062!4d8.8526577" target="_blank">Navigation</a></td> --}}
-                {{!-- </tr> --}}
-            {{!-- <tr> --}}
-                {{!-- <td>SW Sigmaringen CNG</td> --}}
-                {{!-- <td>24,9 km</td> --}}
-                {{!-- <td><a href="https://www.google.de/maps/place/Erdgastankstelle/@48.0813493,9.2371379,312m/data=!3m2!1e3!4b1!4m5!3m4!1s0x479a3ec2332eddb7:0xd0ba478aa65ee279!8m2!3d48.0813493!4d9.2383382" target="_blank">Navigation</a></td> --}}
-                {{!-- </tr> --}}
-            {{!-- </table> --}}
-
-        {{!-- <table hidden id="myTableElek"> --}}
-            {{!-- <tr> --}}
-                {{!-- <th>Name</th> --}}
-                {{!-- <th>Entfernung</th> --}}
-                {{!-- <th>Link</th> --}}
-                {{!-- </tr> --}}
-            {{!-- <tr> --}}
-                {{!-- <td>ENBW Tankstelle</td> --}}
-                {{!-- <td>0,55 km</td> --}}
-                {{!-- <td><a href="https://www.google.de/maps/place/bhg+Autohandelsgesellschaft+mbH,+Volkswagen+Vertragsh%C3%A4ndler/@48.2059193,9.0362416,16.76z/data=!4m8!1m2!2m1!1selektrotankstelle!3m4!1s0x479a1a833a148587:0x65154f5362dc2456!8m2!3d48.2065894!4d9.0384302" target="_blank">Navigation</a></td> --}}
-                {{!-- </tr> --}}
-            {{!-- <tr> --}}
-                {{!-- <td>EnBW Charging Station</td> --}}
-                {{!-- <td>0,13 km</td> --}}
-                {{!-- <td><a href="https://www.google.de/maps/place/EnBW+Charging+Station/@48.209604,9.0297145,17z/data=!4m5!3m4!1s0x479a1a9be29e28d7:0x8fd9f3e43ddeebc0!8m2!3d48.209604!4d9.0311439" target="_blank">Navigation</a></td> --}}
-                {{!-- </tr> --}}
-
-            {{!-- </table> --}}
     </div>
-</div>
 </div>
