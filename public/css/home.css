@@ -7,6 +7,9 @@ body {
      * override via media rule so elements fit the screen */
     overflow-y:auto; 
     background-color: #161616;
+    
+    /* make text not selectable */
+    user-select: none; 
 }
 
 
@@ -33,16 +36,43 @@ body {
 
 }
 
+th{ color: #d9d6cf; }
+td{ color: #d9d6cf; }
+
 .module {
     background: #161616;
-    color: white;
+    color: #d9d6cf;
     padding: 3rem;
     
     font-family: 'Abel', Light;
     font-size: 20px;
-/* font-family: 'Montserrat', sans-serif; */
-    color: #dfddc7;
 }
+
+.bg-dark{
+background: #d9d6cf !important;
+}
+
+.btn-primary{
+/* background-image: linear-gradient(to right, red, orange); */
+/* background-image: linear-gradient( 179.5deg,  rgba(255,230,69,1) 3.3%, rgba(255,157,73,1) 9% ); */
+    background-image: linear-gradient( 110.1deg,  rgba(241,115,30,1) 18.9%, rgba(231,29,54,1) 99% );
+    opacity: 0.9;
+    color: #000000;
+}
+
+button,
+button:hover,
+button:visited,
+button:active,
+button:focus {
+  color: black !important;
+}
+
+button:hover{
+    opacity: 1;
+}
+
+
 
 /* When the width is between 600px and 900px OR above 1100px - change the appearance of <div> */
 @media screen and (max-width: 600px) and (min-width: 300px){

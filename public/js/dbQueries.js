@@ -9,6 +9,10 @@ module.exports.getGasStationByType = function(request ,kraftstoff) {
     return request.app.get('db').prepare('SELECT * FROM tankstellen WHERE kraftstofftyp = ?').all(kraftstoff) 
 }
 
+module.exports.getAllGasStations = function(request) {
+    return request.app.get('db').prepare('SELECT * FROM tankstellen').all() 
+}
+
 
 
 // populate db with dummy users

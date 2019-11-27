@@ -18,7 +18,7 @@
                 <div class="form-row align-items-center">
                     <div class="col-auto my-1">
                         <label for="inputKraftstoff">Kraftstoff auswählen:</label>
-                        <select id="art" class="form-control" name="chosenKraftstoff">
+                        <select id="art" class="form-control bg-dark border-0" name="chosenKraftstoff">
                             <option id="benz" name="Benzin/Diesel" value="Benzin/Diesel">Benzin/Diesel</option>
                             <option id="gas"  name="Gas" value="Gas">Gas</option>
                             <option id="elek" name="Elektro"value="Elektro">Elektro</option>
@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-auto my-1">
                         <label for="inputKraftstoff">...und bestätigen!</label>
-                        <button type="submit"  class="btn btn-warning form-control">Los</button>
+                        <button type="submit"  class="btn btn-primary form-control">Los</button>
                     </div>
                 </div>
             </form>
@@ -41,14 +41,14 @@
                         <th>Tankstelle/Betreiber</th>
                         <th>Kraftstoff</th>
                         <th>Stadt</th>
-                        <th>Entfernung (in Km)</th>
+                        <th>Entfernung</th>
                     </tr>
                     {{#each tankstellen as |tankstelle|}}
                         <tr>
                             <td>{{tankstelle.operator}}</td>
                             <td>{{tankstelle.kraftstofftyp}}</td>
                             <td>{{tankstelle.stadt}}</td>
-                            <td>{{tankstelle.entfernung}}</td>
+                            <td>{{tankstelle.entfernung}} Km</td>
                         </tr>
                     {{/each}}
                 </table>

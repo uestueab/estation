@@ -15,11 +15,18 @@ router.use(function(req, res, next){
 
 router.get('/', function(req, res){
     if (req.session.loggedin) {
-        res.render('profile');
+        res.redirect('/dashboard');
     } else {
         res.render('home', {style: 'home.css', script: 'geolocation.js'});
     }
 });
+
+router.get('/dashboard', function(req,res){
+    var allStations = dbQuery.getAllGasStations(req);
+
+    res.render('dashboard', {style: 'dashboard.css', tankstellen: allStations});
+});
+
 
 router.post('/', function(req, res){
     // Get location of the user and define them globally
@@ -45,7 +52,7 @@ router.post('/standort', function(req,res){
         
         // calculate the distance and round to 2 decimal places 
         var distance = geolib.getDistance({ latitude: userLat, longitude: userLon, },{ latitude: lat, longitude: lon})/1000;
-        var distance = distance.toFixed(2);
+        var distance = distance.toFixed(1);
 
         gasStations.push({
             operator: chosenGasStations[i].operator,
@@ -83,7 +90,7 @@ router.get('/thankyou', function(req, res){
 
 
 router.get('/login', function(req, res){
-    res.render('login', { csrf: 'CSRF token here'});
+    res.render('login', {style: 'login.css', csrf: 'CSRF token here'});
 });
 
 
