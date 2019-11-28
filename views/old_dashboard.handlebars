@@ -1,0 +1,58 @@
+<div class="page-header">
+    <h3>Dashboard: {{session.username}}</h3>
+    <hr>
+</div>
+<div class="row row-custom">
+    <div class="col left">
+        / <span id="asterisk">*</span> INSERT INTO, DELETE FROM THE THE TABLE TO THE RIGHT <span id="asterisk">*</span>/
+
+        <div class="query-panel">
+            <form class="form-inline">
+                <div class="form-group row">
+                    <button type="submit" class="btn btn-primary mb-2 query-btn">DELETE</button>
+                    <div class="mx-sm-3 mb-2">
+                        <input type="text" class="form-control text-center" placeholder="WHERE TANKSTELLEN_ID=?">
+                    </div>
+                </div>
+            </form>
+            <div class="form-group row">
+                <form class="form-inline">
+                    <button type="submit" class="btn btn-primary mb-2 query-btn">INSERT</button>
+                    <div class="mx-sm-3 mb-2">
+                        <input type="text" class="form-control text-center" 
+                                               placeholder="TANKSTELLEN_ID,OPERATOR,KRAFTSTOFFTYP,STADT,LAT,LON" name="insertRow">
+                    </div>
+                </form>
+            </div>
+
+        </div> 
+
+
+    </div>
+    <div class="col right">
+        {{#if tankstellen}}
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+                <table class="table table-light mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">OPERATOR</th>
+                            <th scope="col">KRAFTSTOFFTYP</th>
+                            <th scope="col">STADT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each tankstellen as |tankstelle|}}
+                            <tr>
+                                <td>{{tankstelle.tankstellen_id}}</th>
+                                <td>{{tankstelle.operator}}</td>
+                                <td>{{tankstelle.kraftstofftyp}}</td>
+                                <td>{{tankstelle.stadt}}</td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        {{/if}}
+    </div>

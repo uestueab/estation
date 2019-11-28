@@ -4,27 +4,42 @@
 </div>
 <div class="row row-custom">
     <div class="col left">
-        / <span id="asterisk">*</span> INSERT INTO, DELETE FROM THE THE TABLE TO THE RIGHT <span id="asterisk">*</span>/
+        <p>/ <span class="asterisk">*</span> INSERT INTO, DELETE FROM THE THE TABLE TO THE RIGHT <span class="asterisk">*</span>/</p>
+        {{#if success_msg}}
+            <div class="alert alert-success">{{success_msg}}</div>
+        {{/if}}
+
+        {{#if error_msg}}
+            <div class="alert alert-danger">{{error_msg}}</div>
+        {{/if}}
 
         <div class="query-panel">
-            <form>
+            <form role="form" action="/dashboard?form=dashboard" method="POST">
                 <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">DELETE</label>
+                    <button type="submit" class="btn btn-default query-btn">DELETE</button>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control text-center" id="inputPassword" placeholder="WHERE TANKSTELLEN_ID=?">
+                        <input type="text" class="form-control text-center" 
+                                           placeholder="WHERE TANKSTELLEN_ID=?" name="deleteRow">
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-2
-                    col-form-label">INSERT</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control text-center" id="inputPassword"
-                                                                            placeholder="(TANKSTELLEN_ID,OPERATOR,KRAFTSTOFFTYP,STADT,LAT,LON)">
-                    </div>
-                </div>
-
-        </div> 
             </form>
+            <form role="form" action="/dashboard?form=dashboard" method="POST">
+                <div class="form-group row">
+                    <button type="submit" class="btn btn-default query-btn">INSERT</button>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control text-center" 
+                                           placeholder="(TANKSTELLEN_ID,OPERATOR,KRAFTSTOFFTYP,STADT,LAT,LON)"
+                                           name="insertRow">
+                    </div>
+                </div>
+            </form>
+
+            <hr>
+            <br>
+            <p>/<span class="asterisk">*</span>DELETE EXAMPLE: Type the ID number to delete a certain row <span class="asterisk">*</span>/ </p>
+            <p>/<span class="asterisk">*</span>INSERT EXAMPLE: Type all the values seperated by comma. <br>
+            (eg. 9999,Shell,Gas,Albstadt,49.0,11)<span class="asterisk">*</span>/ </p>
+        </div> 
 
     </div>
     <div class="col right">

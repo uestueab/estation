@@ -21,11 +21,6 @@ router.get('/', function(req, res){
     }
 });
 
-router.get('/dashboard', function(req,res){
-    var allStations = dbQuery.getAllGasStations(req);
-
-    res.render('dashboard', {style: 'dashboard.css', tankstellen: allStations});
-});
 
 
 router.post('/', function(req, res){
@@ -49,7 +44,7 @@ router.post('/standort', function(req,res){
     for (i in chosenGasStations){
         var lat = chosenGasStations[i].lat;
         var lon = chosenGasStations[i].lon;
-        
+
         // calculate the distance and round to 2 decimal places 
         var distance = geolib.getDistance({ latitude: userLat, longitude: userLon, },{ latitude: lat, longitude: lon})/1000;
         var distance = distance.toFixed(1);
@@ -61,16 +56,16 @@ router.post('/standort', function(req,res){
             entfernung: distance
         });
     };
-    
+
     // sort ascending
     gasStations.sort(function(a, b) {
         return parseFloat(a.entfernung) - parseFloat(b.entfernung);
     });
-    
+
     res.render('home', {style: 'home.css', tankstellen: gasStations});
 });
 
-    
+
 router.get('/contact', function(req, res){
     res.render('contact', { csrf: 'CSRF token here'});
 });
@@ -130,6 +125,61 @@ router.get('/logout', function(req, res){
         res.redirect('/login');
     }
 
+});
+
+router.get('/dashboard', function(req,res){
+
+    if (req.session.loggedin) {
+
+        var allStations = dbQuery.getAllGasStations(req);
+        res.render('dashboard', {style: 'dashboard.css', tankstellen: allStations});
+    }
+    else {
+        res.redirect('/');
+    }
+});
+
+router.post('/dashboard', function(req,res){
+    
+    var deleteRow = req.body.deleteRow;
+    var insertRow = req.body.insertRow;
+
+
+
+    if (deleteRow){
+        if(dbQuery.deleteRow(req,deleteRow) == 0){
+            req.flash('error_msg', 'ERROR: No rows were deleted, please enter a valid ID');
+            res.redirect('/dashboard');
+        }
+        else{
+            req.flash('success_msg', 'SUCCESS: Row with ID=' + deleteRow + ' has been deleted');
+            res.redirect('/dashboard');
+        }
+    }
+
+    if (insertRow){
+        var values = insertRow.split(',');
+
+        if(dbQuery.insertRow(req,values) == 0){
+            req.flash('error_msg', 'ERROR: No rows were inserted, please check your values');
+            res.redirect('/dashboard');
+        }
+        else{
+            req.flash('success_msg', 'SUCCESS: Row with ID=' + values[0] + ' has been inserted');
+            res.redirect('/dashboard');
+        }
+    }
+    
+// if (insertRow){
+// if(dbQuery.deleteRow(req,deleteRow) == 0){
+// req.flash('error_msg', 'ERROR: No rows were deleted, please enter a valid ID');
+// res.redirect('/dashboard');
+// }
+// else{
+// req.flash('success_msg', 'SUCCESS: Row has been deleted');
+// res.redirect('/dashboard');
+// }
+// }
 });
 
 module.exports = router;
