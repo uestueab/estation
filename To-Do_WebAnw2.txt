@@ -1,8 +1,0 @@
-1.) Table anlegen mit Tankstellen (ID (pk), Name, Kraftstoffart, Latitude, Longitude)
-
-2.) Auf Startseite Position eingeben abändern:
-	Standortabfrage, um Abruf zu vereinfachen
-
-3.) Login Fehler beheben, User kicken, Login auf Seite nach unten lagern.
-
-4.) Neue Seite Kontakt & Impressum anlegen
