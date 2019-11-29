@@ -2,16 +2,16 @@
 @import url('https://fonts.googleapis.com/css?family=Abel&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
-.navbar-custom{
+.navbar-custom, .navbar-brand{
     background-color: #161616;
+    color: #dfddc7 !important;
 
     font-family: 'Abel', Light;
     font-size: 18px;
 }
 
-.navbar-brand{ 
-} 
 
+.asterisk{ color: #ff5879;}
 
 .btn{
     border:0px solid transparent; /* this was 1px earlier */

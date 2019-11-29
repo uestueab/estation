@@ -159,15 +159,20 @@ router.post('/dashboard', function(req,res){
 
     if (insertRow){
         var values = insertRow.split(',');
+        try{
+            if(dbQuery.insertRow(req,values) == 0){
+                req.flash('error_msg', 'ERROR: No rows were inserted, please check your values');
+                res.redirect('/dashboard');
+            }
+            else{
+                req.flash('success_msg', 'SUCCESS: Row with ID=' + values[0] + ' has been inserted');
+                res.redirect('/dashboard');
+            }
+        }catch(e){
+                req.flash('error_msg', e.toString());
+                res.redirect('/dashboard');
+        }
 
-        if(dbQuery.insertRow(req,values) == 0){
-            req.flash('error_msg', 'ERROR: No rows were inserted, please check your values');
-            res.redirect('/dashboard');
-        }
-        else{
-            req.flash('success_msg', 'SUCCESS: Row with ID=' + values[0] + ' has been inserted');
-            res.redirect('/dashboard');
-        }
     }
     
 // if (insertRow){
